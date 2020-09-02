@@ -1,13 +1,15 @@
 
-1. Basics
+# *Basics*
     - [[Channels]]
     - [[Features]]    
-2. Writing code with Tecture
+# *Writing code with Tecture*
     - [[Services]]
     - [[Queries]]
     - [[Commands]]
-3. Integration
+# *Integration*
     - [[Tecture and Ioc|Ioc]]
     - [[Saving]]
-    - [[Saving]]
-4. Testing with Tecture
+# *Testing with Tecture*
+    - [[Tracing]]
+    - [[Capture test data]]
+    - [[Generate validation]]
