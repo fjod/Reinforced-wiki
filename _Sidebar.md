@@ -9,7 +9,7 @@
 # Integration
  - [[Tecture and Ioc|Ioc]]
  - [[Saving]]
-# Testing with Tecture
+# Testing with Tecture 
  - [[Tracing]]
- - [[Capture test data]]
- - [[Generate validation]]
+ - [[Capture test data|Test-Data.md]]
+ - [[Generate validation|Generate-Validation.md]]
