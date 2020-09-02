@@ -2,7 +2,7 @@
 
 Channel is core Tecture abstraction. Technically it is not going to be instantiated ever. In fact, Tecture needs channel just for its type metadata. 
 
-The concept of channels can be understood as *reference to external system*. Logic in tecture is separated to [[commands]] and [[queries]], but they all has to be addressed to some channel. Typical example is `Db` channel which can be created in almost every system that needs to address database for query or command purposes. 
+The concept of channels can be understood as *reference to external system*. Logic in tecture is separated to [[commands]] and [[queries]], but they all have to be addressed to some channel. Typical example is `Db` channel which can be created in almost every system that needs to address database for query or command purposes. 
 
 # Defining channel
 
