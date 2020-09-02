@@ -1,0 +1,1 @@
+(c) 2020, Pavel B. Novikov
