@@ -58,7 +58,7 @@ public class Nomenclature : TectureService<Product>, INoContext
     }
 ```
 
-Read capabilities of the cannel can be used directly. `From<>` methods is available on `ITecture` inteface. See [[Tecture and Ioc]].
+Read capabilities of the cannel can be used directly. `From<>` methods is available on `ITecture` inteface. See [[Tecture and Ioc|Ioc]].
 
 # Relation between channels and features
 
