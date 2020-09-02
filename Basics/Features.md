@@ -5,9 +5,9 @@ Features define [[channel's|channels]] contract that Tecture forces you to confo
 # Using features with channels
 
 Features do supply `Command` and `Query` classes from their root. These classes are intended to implement common feature's functionality that is usually hidden from feature's users by `protected` and `internal` interfaces. See [example of feature code](https://github.com/reinforced/Reinforced.Tecture/tree/master/Features/Reinforced.Tecture.Features.Orm) (O/RM feature). If you act as feature consumer (means: you want to just use feature, not to maintain) then *you don't have* to care about feature internals. Just connect it to your channel by extending channel's interface with either:
-- `CommandChannel<%Command%>` - where `%Command%` is feature's `Command` class. This allows you to use *write* capabilities of the channel
-- `QueryChannel<%Query%>` - where `%Query%` is feature's `Query` class. This allows you to use *read* capabilities of the channel
-- `CommandQueryChannel<%Command%,%Query%>` - just both of above combined
+- `CommandChannel<_Command_>` - where `_Command_` is feature's `Command` class. This allows you to use *write* capabilities of the channel
+- `QueryChannel<_Query_>` - where `_Query_` is feature's `Query` class. This allows you to use *read* capabilities of the channel
+- `CommandQueryChannel<_Command_,_Query_>` - just both of above combined
 
 You can connect as much features to your channel as you want. Examples:
 
