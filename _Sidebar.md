@@ -7,6 +7,7 @@
  - [[Queries]]
  - [[Commands]]
 # Integration
+ - [[Runtimes]]
  - [[Tecture and Ioc|Ioc]]
  - [[Saving]]
 # Testing with Tecture 
