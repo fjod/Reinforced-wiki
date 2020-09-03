@@ -37,7 +37,7 @@ Query extensions can be placed everywhere. Their intention is to replace read ab
 
 # Using queries
 
-In order to perform query you need to obtain reading channel end. You can do that using `From<>` method. It can be located within [[service|services]] or [[`ITecture` instance|Ioc]].
+In order to perform query you need to obtain reading channel end. You can do that using `From<>` method. It can be located within [[service|services]] or `ITecture` [[instance|Ioc]].
 
 Example: query from the service
 
