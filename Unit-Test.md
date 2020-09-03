@@ -45,9 +45,11 @@ Test data entries contains hash of the query. It is being computed by feature th
 
 *Example:* the same setup with services `A` and `B` but you changed some `.Where` criterias. ORM feature will compute the hash of expression and if it is different - test fails again because we cannot be sure anymore that logic works correctly.
 
-## Command order
+## Commands order
 
 Basically Tecture ensures that commands in trace follows one after another and if validation says that after command of type `Add` there must be command of type `Save` (synthetic command that denotes that `Save`/`SaveAsync` call happened at this point of the trace). So if order is violated - Tecture throws meaningful exception. 
+
+## Commands consistence
 
 Basic Tecture checks validates command annotation to correspond to initial value. Can be disabled by removing `.Basics` call from validation generator's configuration ([here](https://github.com/reinforced/Reinforced.Tecture/blob/master/Playground/Reinforced.Samples.ToyFactory.Tests/Infrastructure/TectureCase.cs#L49)).
 
