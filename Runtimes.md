@@ -4,7 +4,7 @@ Runtime implements [[features]]. Single runtime may implement one or more featur
 
 Keep in mind that runtime may contain dependencies on 3rd-party packages whether features usually do not.
 
-# Connect runtimes
+# Bind channels to runtimes
 
 Bindind channels to exact runtime is pretty similar to typical IoC registration, but usually is much shorter.
 
