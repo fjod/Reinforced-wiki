@@ -1,14 +1,19 @@
 # The concept
 
-Trace embraces copies (deep clones) of all the results of the [[queries]] made through Tecture infrastructure. This circumstance allows us to persist query results and reproduce them without external infrastructure. The most efficient way to store query results is... C# code. It allows to maintain compile-time checks of the test data and brings unit testing experience on the new level. 
-
-Well, actually automated capturing of query results sets you free from typing test data manually and/or maintain test infrastructure setup. It is intended to reduce test maintenance costs.
+Automated capturing of test data sets you free from typing test data manually and/or maintain test infrastructure setup. It is intended to reduce test maintenance costs.
 
 Automated test data capture is core concept that is needed to support [data-driven testing](https://en.wikipedia.org/wiki/Data-driven_testing) within Tecture.
 
-# How?
+# How to capture data
 
-Data itself is being already captured by `Trace`. In order to serialize it into the C# code you have to install `Reinforced.Tecture.Testing` NuGet package. Test data serialization capabilities are not included into core because they use [Roslyn](https://github.com/dotnet/roslyn) for code generation whether Tecture core maintains 0-dependency.
+Trace does that when you do [[tracing]]. That is why it is bad idea to call `BeginTrace`/`EndTrace` in production code. 
+
+After callind `EndTrace`, `Trace` instances embraces copies (deep clones) of all the results of the [[queries]] made through Tecture infrastructure. This circumstance allows us to persist query results and reproduce them without external infrastructure. The most efficient way to store query results is... C# code. It allows to maintain compile-time checks of the test data and brings unit testing experience on the new level. 
+
+
+# How to serialize test data into C# code
+
+As mentioned above, data itself is already contained within `Trace` instance. Some tooling needed to extract it from there and turn into C# code. In order to do that you have to install `Reinforced.Tecture.Testing` NuGet package. Test data serialization capabilities are not included into core because they use [Roslyn](https://github.com/dotnet/roslyn) for code generation whether Tecture core keeps 0-dependency.
 
 ```bash
 > Install-Package Reinforced.Tecture.Testing
