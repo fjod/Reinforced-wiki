@@ -33,6 +33,28 @@ public class Startup
 	}
 }
 ```
+
+Example: using Tecture from ASP.NET MVC application:
+```csharp
+public class OrdersController : ApiController
+{
+	private readonly ITecture _tecture;
+
+	public OrdersController(ITecture tecture)
+	{
+		_tecture = tecture;
+	}
+
+	public ActionResult PerformActionWithOrder(int id)
+	{
+		_tecture.Do<Orders>().PerformAction(id);
+		_tecture.Save();
+
+		return Ok();
+	}
+}
+```
+
 # `ITecture` methods
 
 Pretty few:
