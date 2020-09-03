@@ -40,9 +40,3 @@ public interface Db4 :
 ```
 
 Not `Db3` channel. It is said that "it is impossible to write to it". It means that you *technically* will not have tools to write into this DB. If you try - you will get *compile-time* error.
-
-# Implementing feature
-
-`//todo`
-
-## Feature structure
