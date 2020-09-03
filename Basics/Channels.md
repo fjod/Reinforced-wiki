@@ -42,20 +42,20 @@ Channels are being used from [[services]]. There are protected `From<>` and `To<
 Both of these methods consume channel as type parameter. Consider following example of accessing channel within service of 2 entities (`Product` and `Order`):
 
 ```csharp
-public class Nomenclature : TectureService<Product>, INoContext
-    {
-        private Nomenclature() { }
+public class SeriousService : TectureService<Product>, INoContext
+{
+	private SeriousService() { }
 
-        public void DoBusinessLogic()
-        {
-            var order = From<Db>().Get<Order>().ById(10);
+	public void DoBusinessLogic()
+	{
+		var order = From<Db>().Get<Order>().ById(10);
 
-            To<Db>().Add(new Product() {Name = "New one"});
+		To<Db>().Add(new Product() {Name = "New one"});
 
-            To<Order>().Add(new Product() {Name = "New one"}); // <- Compile-time error: 
-            // ^-- cannot add Product because this service does not work with Orders
-        }
-    }
+		To<Order>().Add(new Product() {Name = "New one"}); // <- Compile-time error: 
+		// ^-- cannot add Product because this service does not work with Orders
+	}
+}
 ```
 
 Read capabilities of the cannel can be used directly. `From<>` methods is available on `ITecture` inteface. See [[Tecture and Ioc|Ioc]].
