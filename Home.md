@@ -4,7 +4,7 @@ Welcome to **Reinforced.Tecture** documentation. This is guide through main Tect
 
 Enjoy!
 
-# Tale of contents
+# Table of contents
 
 ## Basics
  - [[Channels]]
