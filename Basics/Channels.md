@@ -1,4 +1,4 @@
-# Channel purpose
+# The concept
 
 Channel is core Tecture abstraction. Technically it is not going to be instantiated ever. In fact, Tecture needs channel just for its type metadata. 
 
