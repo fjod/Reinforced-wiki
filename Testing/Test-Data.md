@@ -40,9 +40,9 @@ using System.Collections.Generic;
 using Reinforced.Tecture.Testing.Data;
 using Reinforced.Samples.ToyFactory.Logic.Warehouse.Entities;
 
-namespace Reinforced.Samples.ToyFactory.Tests.WarehouseTests.RenameMeasurementUnit
+namespace Namespace.Of.My.Tests
 {
-		class RenameMeasurementUnit_TestData : CSharpTestData
+		class ClassWithTestData : CSharpTestData
 		{
 			private Boolean GetEntry_1()
 			{ 
