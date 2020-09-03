@@ -8,6 +8,7 @@ Enjoy!
 Core concepts of Tecture getting explained
  - [[Channels]]: abstract type-bound external system delimiters
  - [[Features]]: defining the channel's functionality
+ - [[Entities]]: common game rules regarding entities
 ## Writing code
 How to write code with Tecture and implement required functionality.
  - [[Services]]: the place for your business logic
