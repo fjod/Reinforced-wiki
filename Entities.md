@@ -116,4 +116,4 @@ public void CreateOrder(CreateOrderDto orderDto)
 }
 ```
 
-Follow the simple rule: if business logic method has *more than 5 arguments* - it is valid place to create DTO.
+Follow the simple rule: if business logic method has *more than 5 parameters* - then it is valid place to create DTO.
