@@ -53,7 +53,7 @@ public class SeriousService : TectureService<Product /*, Order */>, INoContext
 		To<Db>().Add(new Product() {Name = "New one"});
 
 		To<Db>().Add(new Order() {Name = "New one"}); // <- Compile-time error: 
-		// ^-- cannot add Order because this service does not work with Orders
+		// ^-- cannot add Order because this service does not modify Orders
 	}
 }
 ```
