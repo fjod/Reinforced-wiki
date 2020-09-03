@@ -94,7 +94,7 @@ Service contains primary methods to work with channels
 
 Being invoked with `TChannel` as type parameter, obtains `Read<TChannel>` object that reveals reading end of the channel. Extension methods for reading from channel will be automatically provided by corresponding [[features]].
 
-## `To<>`
+## `To<>` method
 
 Being invoked with `TChannel` as type parameter, obtains `Write<TChannel>` object that reveals writing (commands) end of the channel. Extension methods for reading from channel will be automatically provided by corresponding [[features]].
 
