@@ -36,8 +36,8 @@ Practically it means that you will have `Db` channel that you can Add/Remove/Upd
 # Channel usage
 
 Channels are being used from [[services]]. There are protected `From<>` and `To<>` methods in service:
-- `From<>` gives you access to *reading* capabilities of the channel
-- `To<>` gives you access to *writing* capabilities of the channel
+- `From<>` gives you access to *reading* capabilities of the channel (aka "read end of channel")
+- `To<>` gives you access to *writing* capabilities of the channel (aka "write end of channel")
 
 Both of these methods consume channel as type parameter. Consider following example of accessing channel within service of 2 entities (`Product` and `Order`):
 
