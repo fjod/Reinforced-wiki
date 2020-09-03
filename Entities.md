@@ -83,3 +83,37 @@ public class GoodEntity
 	public Order Order { get; internal set; }
 }
 ```
+
+# DTOs
+
+DTOs are good. Use them. 
+
+The thing is that DTOs are not entities per se. They are containers for parameters of business logic methods:
+
+## Bad
+```csharp
+public void CreateOrder(string name, DateTime issuedDat, string command, Status status, bool isActive, int ownerId)
+{
+	//...
+}
+```
+
+## Better
+```csharp
+class CreateOrderDto
+{
+	public string Name { get; set; }
+	public DateTime IssueDate { get; set; }
+	public string Command { get; set; }
+	public Status Status { get; set; }
+	public bool IsActive { get; set; }
+	public int OwnerId { get; set; }
+}
+
+public void CreateOrder(CreateOrderDto orderDto)
+{
+	//...
+}
+```
+
+Follow the simple rule: if business logic method has *more than 5 arguments* - it is valid place to create DTO.
