@@ -1,6 +1,6 @@
 # The concept
 
-Command is *atomic change to external system*. They are not being performed instantly but instead of that, collected into *commands queue* that tecture maintains. Dispatching of commands queue happens on [[saving]] stage. Set of commands to be enqueued is being defined by [[features]] that are connected to your channel. Usually feature provides set of extension methods for channel's write end that are responsible for proper instantiation and enqueueing commands. 
+Command is *atomic change to external system*. They are not being performed instantly but instead of that, collected into *commands queue* that Tecture maintains. Dispatching of commands queue happens on [[saving]] stage. Set of commands to be enqueued is being defined by [[features]] that are connected to your channel. Usually feature provides set of extension methods for channel's write end that are responsible for proper instantiation and enqueueing commands. 
 
 Technically command is instance of class inherited from `CommandBase`. Good tradition is that features are hiding command constructor behind `internal` modifier so you cannot instantiate them directly. 
 
