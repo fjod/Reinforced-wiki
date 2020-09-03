@@ -28,10 +28,12 @@ This package supplies 2 extension methods for `Trace`:
 Use following code to generate test data:
 ```csharp
 Trace t = _tecture.EndTrace();
-var output = t.GenerateTestData("ClassWithTestData", "Namespace.Of.My.Tests");
+var output = t.GenerateTestData("MyTestData", "Namespace.Of.My.Tests");
 output.ToFile(@"Full\Path\To\Code\File.cs");
 ```
-It will generate `File.cs` within `Full\Path\To\Code\` folder. File with test data will contain something like this:
+It will generate `File.cs` within `Full\Path\To\Code\` folder. 
+
+Here is example of test data class for some random business logic:
 
 ```csharp
 using System;
@@ -42,7 +44,7 @@ using Reinforced.Samples.ToyFactory.Logic.Warehouse.Entities;
 
 namespace Namespace.Of.My.Tests
 {
-		class ClassWithTestData : CSharpTestData
+		class MyTestData : CSharpTestData
 		{
 			private Boolean GetEntry_1()
 			{ 
@@ -82,6 +84,18 @@ namespace Namespace.Of.My.Tests
 		}
 }
 ```
+# Use test data
+
+In order to mock all the following queries with generated test data, you must tell `TectureBuilder` to use generated test data class (yes, for number of reasons it has to be done within [[integration stage|Ioc]]:
+
+```csharp
+var tb = new TectureBuilder();
+// ...channels configuration...
+tb.WithTestData(new MyTestData());
+var tecture = tb.Build();
+```
+
+That's all. All the queries done through this `tecture` instace will be redirected to test data.
 
 # Customization
 
