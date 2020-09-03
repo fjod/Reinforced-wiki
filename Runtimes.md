@@ -6,6 +6,8 @@ Keep in mind that runtime may contain dependencies on 3rd-party packages whether
 
 # Connect runtimes
 
+Bindind channels to exact runtime is pretty similar to typical IoC registration, but usually is much shorter.
+
 Runtimes are being connected to each channel according to features that they use. All the features used by channel must be fullfilled with runtimes when [[integrating|Ioc]] Tecture into your system. This can be done when you create `TectureBuilder` object as follows:
 
 ```csharp
