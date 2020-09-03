@@ -2,6 +2,8 @@
 
 Features define [[channel's|channels]] contract that Tecture forces you to conform with. They do declare *possible channel capabilities*. Technically they define what methods are available after calling `From<Channel>` and `To<Channel>`. Features are pure abstract. Ideal feature does not declare any executable code. But it is still good place to perform syntax sugar around channel's read and write ends (inputs and outputs). Features are being delivered as separate NuGet packages and created from scratch. Usually system architect is valid person to create new features.
 
+Currently Tecture contains 2 features: [ORM](https://github.com/reinforced/Reinforced.Tecture/tree/master/Features/Reinforced.Tecture.Features.Orm) and [SqlStroke](https://github.com/reinforced/Reinforced.Tecture/tree/master/Features/Reinforced.Tecture.Features.SqlStroke).
+
 # Using features with channels
 
 Features do supply `Command` and `Query` classes from their root. These classes are intended to implement common feature's functionality that is usually hidden from feature's users by `protected` and `internal` interfaces. See [example of feature code](https://github.com/reinforced/Reinforced.Tecture/tree/master/Features/Reinforced.Tecture.Features.Orm) (O/RM feature). If you act as feature consumer (means: you want to just use feature, not to maintain) then *you don't have* to care about feature internals. Just connect it to your channel by extending channel's interface with either:
