@@ -5,7 +5,7 @@ Runtime implements [[features]]. Single runtime may implement one or more featur
 Keep in mind that runtime may contain dependencies on 3rd-party packages whether features usually do not. So in order to use EF.Core runtime, you have to install it:
 
 ```sh
-> Install-Package Reinforced.Tecture.Runtimes.EfCore
+PM> Install-Package Reinforced.Tecture.Runtimes.EfCore
 ```
 
 # Bind channels to runtimes
