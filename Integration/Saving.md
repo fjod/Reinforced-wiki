@@ -9,6 +9,7 @@ void Dispatch() {
 	while(queue.HasCommands)
 	{
 	   var chunk = queue.Clone();
+	   queue.Purge();
 	   while(chunk.HasCommands)
 	   {
 		  var command = chunk.Dequeue();
