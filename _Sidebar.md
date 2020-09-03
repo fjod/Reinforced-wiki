@@ -2,6 +2,7 @@
 # Basics
  - [[Channels]]
  - [[Features]]
+ - [[Entities]]
 # Writing code
  - [[Services]]
  - [[Queries]]
