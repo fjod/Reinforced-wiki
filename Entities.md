@@ -70,7 +70,9 @@ It will comply with ORM feature and trigger proper processes in EF Runtime, but 
 
 # Restrict write access
 
-Try to ensure the situation when only particular services and assemblies have write access to the entity. E.g. you can move your entities into separate assembly and close setters and constructor witn `internal` modifier. `internal` modifier is not a problem for majority of ORMs, so by restricting entity of unwanted modifications and opening it for reading you significantly reduce number of suspicios things happening in your system.
+Try to achieve the state when only *particular services in partucilar assemblies* have write access to the entity. 
+
+E.g. you can move your entities related to some business functionality into separate assembly and then close setters and constructor witn `internal` modifier. `internal` modifier is not a problem for majority of ORMs, so by restricting entity of unwanted modifications and opening it for reading you significantly reduce number of suspicios things happening in your system.
 
 ```csharp
 public class GoodEntity
