@@ -18,7 +18,7 @@ public class Orders : TectureService<Order>, INoContext
 
 It is important to understand that `sp_exec ...` will **not** be executed immediately. `.SqlStroke` does not address database immediately. It just *enqueues the command* that will send this command to database after you call `ITecture.Save()`. See [[integration|Ioc]] section in order to understand where to trigger commands dispatching.
 
-# Writing service
+# Defining service
 
 As you have noticed, services are classes that inherit `TectureService<>` class. There are several noticable things in Tecture service:
 
@@ -81,12 +81,33 @@ public class OrdersController : ApiController
 
 # Service lifetime
 
+Tecture service instance is being created on demand when `Do<>` with this service as type parameter is invoked for the first time. 
+Tecture service dies when entire `ITecture` instance dies. So if you define `ITecture` within per-request lifetime scope then all tecture services will exist within this scope. Not more, not less. 
 
+Keep this information in mind when defining private variables within service.
 
-# Defining service
+# What is available inside service?
 
-# Primary service methods
+Service contains primary methods to work with channels
 
-## `From<>`
+## `From<>` method
+
+Being invoked with `TChannel` as type parameter, obtains `Read<TChannel>` object that reveals reading end of the channel. Extension methods for reading from channel will be automatically provided by corresponding [[features]].
 
 ## `To<>`
+
+Being invoked with `TChannel` as type parameter, obtains `Write<TChannel>` object that reveals writing (commands) end of the channel. Extension methods for reading from channel will be automatically provided by corresponding [[features]].
+
+Methods `From<>` and `To<>` are lightweight, so can be safely called as much as needed. 
+
+# Lifecycle methods
+
+- `Init` and `Dispose` methods are being called when service is goind to be created and destroyed correspondingly.
+- `OnSave`/`OnSaveAsync` methods are being called when [[saving]]/async saving is initiated
+- `OnFinally`/`OnFinallyAsync`  methods are being called after clearing the entire commands queue and all `Save` iterations passed
+
+`OnSave*` and `OnFinally*` can be called several times because of nature of post-save actions.
+
+# Post-save actions
+
+`Save` and `Finally` are properties that allows you to perform actions AFTER [[saving]] actually happened. You may turn your business logic method into async one and than use `await Save` and `await Finally` to enqueue actions that might to take place after [[saving]] happened or all the commands queue dispatched (`Finally`). Please keep in mind that if you enqueue more and more commands after save/finally - you are triggering them to happen and happen again. Be careful, it may be tricky. 
