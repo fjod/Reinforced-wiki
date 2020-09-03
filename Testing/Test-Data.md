@@ -8,7 +8,7 @@ Automated test data capture is core concept that is needed to support [data-driv
 
 Trace does that when you do [[tracing]]. That is why it is bad idea to call `BeginTrace`/`EndTrace` in production code. 
 
-After callind `EndTrace`, `Trace` instances embraces copies (deep clones) of all the results of the [[queries]] made through Tecture infrastructure. This circumstance allows us to persist query results and reproduce them without external infrastructure. The most efficient way to store query results is... C# code. It allows to maintain compile-time checks of the test data and brings unit testing experience on the new level. 
+After calling `EndTrace`, `Trace` instances embraces copies (deep clones) of all the results of the [[queries]] made through Tecture infrastructure. This circumstance allows us to persist query results and reproduce them without external infrastructure. The most efficient way to store query results is... C# code. It allows to maintain compile-time checks of the test data and brings unit testing experience on the new level. 
 
 
 # How to serialize test data into C# code
