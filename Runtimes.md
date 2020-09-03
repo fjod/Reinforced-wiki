@@ -2,7 +2,11 @@
 
 Runtime implements [[features]]. Single runtime may implement one or more features usually using some 3rd-party technology under the hood. Runtimes are being delivered by separate NuGet packages. Currently Tecture offers single runtime for [ORM](https://github.com/reinforced/Reinforced.Tecture/tree/master/Features/Reinforced.Tecture.Features.Orm) and [SqlStroke](https://github.com/reinforced/Reinforced.Tecture/tree/master/Features/Reinforced.Tecture.Features.SqlStroke) features based on [EntityFramework Core](https://docs.microsoft.com/en-us/ef/core/). This runtime is called [Reinforced.Tecture.Runtimes.EFCore](https://github.com/reinforced/Reinforced.Tecture/tree/master/Runtimes/Reinforced.Tecture.Runtimes.EFCore) and available as NuGet package. 
 
-Keep in mind that runtime may contain dependencies on 3rd-party packages whether features usually do not.
+Keep in mind that runtime may contain dependencies on 3rd-party packages whether features usually do not. So in order to use EF.Core runtime, you have to install it:
+
+```sh
+> Install-Package Reinforced.Tecture.Runtimes.EfCore
+```
 
 # Bind channels to runtimes
 
