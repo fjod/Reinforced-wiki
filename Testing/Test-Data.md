@@ -83,7 +83,7 @@ namespace Reinforced.Samples.ToyFactory.Tests.WarehouseTests.RenameMeasurementUn
 }
 ```
 
-# Test generation customization
+# Customization
 
 You can substitute values of particular query result that test generator will embed into resulting code. Like this:
 ```csharp
