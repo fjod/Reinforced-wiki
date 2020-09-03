@@ -81,8 +81,8 @@ public class OrdersController : ApiController
 
 # Service lifetime
 
-Tecture service instance is being created on demand when `Do<>` with this service as type parameter is invoked for the first time. 
-Tecture service dies when entire `ITecture` instance dies. So if you define `ITecture` within per-request lifetime scope then all tecture services will exist within this scope. Not more, not less. 
+- Tecture service instance is being created on demand when `Do<>` with this service as type parameter is invoked for the first time. 
+- Tecture service dies when entire `ITecture` instance dies. So if you define `ITecture` within per-request lifetime scope then all tecture services will exist within this scope. Not more, not less. 
 
 Keep this information in mind when defining private variables within service.
 
