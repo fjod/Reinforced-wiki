@@ -62,4 +62,4 @@ Read capabilities of the cannel can be used directly. `From<>` methods is availa
 
 # Relation between channels and features
 
-Simple. By example: If `Db` channel will not implement `CommandChannel<Orm.Command>` - then there will no extension method `.Add` be available producing compile-time error. It forbids you from e.g. adding entities into message queue and forces you to keep channel contract.
+Simple. By example: If `Db` channel does not implement `CommandChannel<Orm.Command>` - there is no extension method `.Add`, which would produce compile-time error. It forbids you from e.g. adding entities into message queue and forces you to keep channel contract.
