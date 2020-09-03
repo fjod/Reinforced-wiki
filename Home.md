@@ -18,8 +18,8 @@ Enjoy!
  - [[Saving]]
 ## Testing with Tecture
  - [[Tracing]]
- - [[Capture test data|Test-Data.md]]
- - [[Generate validation|Generate-Validation.md]]
+ - [[Capture test data|Test-Data]]
+ - [[Generate validation|Generate-Validation]]
 # Customization and add-ons
  - [[How to create feature|How-to-create-feature]] 
  - [[How to implement runtime|How-to-implement-runtime]] 
