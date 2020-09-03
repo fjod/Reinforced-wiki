@@ -9,7 +9,7 @@ Base on information within `Trace` you can [[catch test data, serialize it into 
 - `All`/`Commands`/`Queries` collections: sequences of tracing records in a form of commands, allowed to proceed programmaticaly
 - `OfChannel<>` method that retrieves another `Trace` object containing commands related only to particular channel
 - `Begins` method that starts trace validation. This method is not intended to be called manually: see [[how to generate validation|Generate-Validation]] out of trace and to create unit tests
-- `ToText`: this method gives human-readeable representation of what happened within the trace step by step
+- `ToText`: this method gives trace explanation: human-readeable representation of what happened within the trace step by step. See [[describe]] section in order to get information how to use and improve textual trace explanations.
 
 # Difference between the `Trace` and logging
 
