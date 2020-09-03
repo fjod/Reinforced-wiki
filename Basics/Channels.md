@@ -42,7 +42,7 @@ Channels are being used from [[services]]. There are protected `From<>` and `To<
 Both of these methods consume channel as type parameter. Consider following example of accessing channel within service of 2 entities (`Product` and `Order`):
 
 ```csharp
-public class SeriousService : TectureService<Product>, INoContext
+public class SeriousService : TectureService<Product /*, Order */>, INoContext
 {
 	private SeriousService() { }
 
