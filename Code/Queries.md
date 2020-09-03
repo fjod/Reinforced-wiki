@@ -4,7 +4,7 @@ Queries are requests to external system *that does not change their data state*.
 
 Thing that we actually have to ensure - that our logic *does not perform any updated on outer systems*. Tecture tries to ensure it when possible, but often it is not. E.g.: you *may* perform direct SQL queries to the database that actuall do `UPDATE`. But you better to do not. Tecture cannot ensure it technically, so unfortunately it relies on you.
 
-# Writing queries in Tecture
+# Write queries in Tecture
 
 Queries in tecture are being performed as extension methods to channel's read end:
 
