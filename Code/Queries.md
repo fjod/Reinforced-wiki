@@ -1,8 +1,8 @@
 # The concept
 
-Queries are requests to external system *that does not change their data state*. In ideal world queries are *pure functions* (idempotent - can be called without different outcome), but in realty this is not possible. Two consequent queries *may* return different data. It depends on outer system's behavior. 
+Queries are requests to external system *that does not change their data state*. In ideal world queries are *pure functions* (idempotent - user receive same result with each call), but in reality this is not possible. Two consequent queries *may* return different data. It depends on outer system's behavior. 
 
-Thing that we actually have to ensure - that our logic *does not perform any updated on outer systems*. Tecture tries to ensure it when possible, but often it is not. E.g.: you *may* perform direct SQL queries to the database that actuall do `UPDATE`. But you better to do not. Tecture cannot ensure it technically, so unfortunately it relies on you.
+Thing that we actually have to ensure - that our logic *does not perform any update on outer systems*. Tecture tries to ensure it when possible, but often it is not. E.g.: you *may* perform direct SQL queries to the database that actuall do `UPDATE`. But you better to do not. Tecture cannot ensure it technically, so unfortunately it relies on you.
 
 # Write queries in Tecture
 
@@ -13,7 +13,7 @@ var user = From<Db>().All<User>().FirstOrDefault(x=>x.Id == 10);
 var order = From<Db>().SqlQuery<Order>(x=>$"SELECT * FROM {x}").As<Order>().First();
 ```
 
-Both `.All<>` and `.SqlQuery<>` are extension (static) methods provided by the feature. They return their own abstractions that you also may use and create extension methods to. 
+Both `.All<>` and `.SqlQuery<>` are extension (static) methods provided by the feature. They return their own abstractions that you also may use and create own extension methods. 
 
 Example: generic `ById` method performed using ORM feature. My favorite one:
 

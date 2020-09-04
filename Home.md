@@ -15,16 +15,16 @@ How to write code with Tecture and implement required functionality.
  - [[Queries]]: how to properly query data from external sources
  - [[Commands]]: a way to perform exact action on external system
 ## Integration
-How to use Tecture with your application
+How to use Tecture within your application
  - [[Tecture and Ioc|Ioc]]: how to propagate tecture access points through the IoC
  - [[Saving]]: how to apply changes on external systems
 ## Testing with Tecture
-Testing, workflow and informational capabilitites of Tecture are being explained here
- - [[Tracing]]: how to collect information about what it happening
+Testing, workflow and informational capabilitites of Tecture explained here
+ - [[Tracing]]: how to collect information 
  - [[Capture test data|Test-Data]]: extract test data from the trace
  - [[Generate validation|Generate-Validation]]: generate command flow validation from the trace
  - [[Create unit test|Unit-Test]]: combine test data with validation and get meaningful and lightweight unit tests that do not require infrastructure
 # Customization and add-ons
 Writing extensions for Tecture in order to best-fit your workflow
- - [[How to create feature|How-to-create-feature]]: protocol of creating feature for channel
- - [[How to implement runtime|How-to-implement-runtime]]: protocol of implementing channel features
+ - [[How to create feature|How-to-create-feature]]: protocol for creating feature for channel
+ - [[How to implement runtime|How-to-implement-runtime]]: protocol for implementing channel features

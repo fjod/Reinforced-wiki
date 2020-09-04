@@ -1,8 +1,8 @@
 # The concept
 
-Command is *atomic change to external system*. They are not being performed instantly but instead of that, collected into *commands queue* that Tecture maintains. Dispatching of commands queue happens on [[saving]] stage. Set of commands to be enqueued is being defined by [[features]] that are connected to your channel. Usually feature provides set of extension methods for channel's write end that are responsible for proper instantiation and enqueueing commands. 
+Command is *atomic change to external system*. They are not executed instantly but collected into *commands queue* that Tecture maintains. Dispatching of commands queue happens on [[saving]] stage. Set of commands to be enqueued is defined by [[features]] that are connected to your channel. Usually feature provides set of extension methods for channel's write end that are responsible for proper instantiation and enqueueing commands. 
 
-Technically command is instance of class inherited from `CommandBase`. Good tradition is that features are hiding command constructor behind `internal` modifier so you cannot instantiate them directly. 
+Technically command is an instance of class inherited from `CommandBase`. Good tradition is that features are hiding command constructor behind `internal` modifier so you cannot instantiate them directly. 
 
 # Commands queue
 
@@ -20,7 +20,7 @@ You don't have access to commands queue from `ITecture` interface. Only from ser
 
 # Dispatching commands
 
-You don't actually need to know how commands are being run unless you are going to implement your own [[features]] or your [[runtimes]].
+Actually, you dont need to know how commands are executed under the hood, unless you are going to implement your own [[features]] or your [[runtimes]].
 
 Tecture itself only initiates commands queue dispatching, traverses it and picks correct tooling to execute command. It does not runs command by itself. [[Features]] and [[Runtimes]] are responsible of exact execution of commands. Technically it involves Savers and Runners:
 

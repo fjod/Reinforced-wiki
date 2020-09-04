@@ -1,8 +1,8 @@
 # The concept
 
-Tecture relies on *anemic entities* containing 0 logic. As soon as [C# 9 records](https://devblogs.microsoft.com/dotnet/welcome-to-c-9-0/#records) will be released - Tecture will move on them because right now there is no honest reason to keep mutable entities.
+Tecture relies on *anemic entities* containing 0 logic. As soon as [C# 9 records](https://devblogs.microsoft.com/dotnet/welcome-to-c-9-0/#records) is released - Tecture will move on them because right now there is no honest reason to keep mutable entities.
 
-Tecture design borrows some concepts of EntityFramework regarding entities, but actually it uses them a lot in order to obtain type information, not data itself. So treat entity type as metadata for your project domain.
+Tecture design borrows some concepts from EntityFramework entities, but actually it uses them a lot in order to obtain type information, not data itself. So treat entity type as metadata for your project domain.
 
 # Do not put logic into entities
 
@@ -72,7 +72,7 @@ It will comply with ORM feature and trigger proper processes in EF Runtime, but 
 
 Try to achieve the state when only *particular services in partucilar assemblies* have write access to the entity. 
 
-E.g. you can move your entities related to some business functionality into separate assembly and then close setters and constructor witn `internal` modifier. `internal` modifier is not a problem for majority of ORMs, so by restricting entity of unwanted modifications and opening it for reading you significantly reduce number of suspicios things happening in your system.
+E.g. you can move your entities related to some business functionality into separate assembly and then close setters and constructor witn `internal` modifier. `internal` modifier is not a problem for majority of ORMs, so by restricting entity from unwanted modifications and opening it for reading you significantly reduce number of suspicious things happening in your system.
 
 ```csharp
 public class GoodEntity
@@ -92,7 +92,7 @@ The thing is that DTOs are not entities per se. They are containers for paramete
 
 ## Bad
 ```csharp
-public void CreateOrder(string name, DateTime issuedDat, string command, Status status, bool isActive, int ownerId)
+public void CreateOrder(string name, DateTime issuedAt, string command, Status status, bool isActive, int ownerId)
 {
 	//...
 }

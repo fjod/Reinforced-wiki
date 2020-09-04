@@ -2,7 +2,7 @@
 
 Since we have queue of the commands appearing in particular order in context of particular user input and particular data in channels and *we consider this behavior correct and complying with current business requirements* - we can automatically generate code that will validate this case and wrap it into regression data-driven unit test.
 
-In other words, as soon as we've got business logic scenario that satisfies business requirements, we can [[capture test data|Test-Data]] for it and produce code that validates the fact that this business logic under certain conditions *produces exactly desired set of commands*. This formal check is intended to be left in the code, can run without any infrastructure and will make as sure that the process of order creation works exactly the same as 10 years ago and we did not ruin it by new features, bugfixes and other code modifications.
+In other words, as soon as we've got business logic scenario that satisfies business requirements, we can [[capture test data|Test-Data]] for it and produce code that validates the fact that this business logic under certain conditions *produces exactly desired set of commands*. This formal check is intended to be left in the code, can run without any infrastructure and will make sure that the process of order creation works exactly the same as 10 years ago and we did not ruin it by new features, bugfixes and other code modifications.
 
 # How to generate validation code
 
@@ -29,9 +29,9 @@ output.ToFile(@"Full\Path\To\Code\File.cs");
 `GenerateUnitTest` method consumes following parameters:
 - `className`: name of class that will contain validation code
 - `ns`: namespace that will contain the class with validation code
-- `config`: configuration of what checks to embed into resulting validation
+- `config`: which checks will be embedded into resulting validation
 
-Here is the sample of validation class to be generated for some random business logic:
+Here is the sample of validation class generated for some random business logic:
 
 ```csharp
 using System;
@@ -94,13 +94,13 @@ Trace t = _tecture.EndTrace();
 var validation = new MyBusinessCaseValidation();
 validation.Validate(t);
 ```
-Validation class will ensure that commands appear in described order and each command satisfy number of checks.
+Validation class ensures that commands appear in described order and each command satisfy number of checks.
 
 # Checks
 
-Each command that is being captured within the trace can be validated against number of *checks*. [[Features]] that supply available commands also supply checks and their descriptions for testing purposes. 
+Each command that is captured within the trace can be validated against number of *checks*. [[Features]] that supply available commands also supply checks and their descriptions for testing purposes. 
 
-Check is basically class that inherits `CommandCheck<TCommand>` supplying command that is going to be validated as type parameter. Typical check overrides following `CommandCheck<>` methods:
+Check is a class that inherits `CommandCheck<TCommand>`. It supplies command that will be validated as type parameter. Typical check overrides following `CommandCheck<>` methods:
 - `IsActuallyValid`: determines whether command actually passes check or not
 - `GetMessage`: obtains meaningful error message in case if check fails
 
@@ -115,7 +115,7 @@ public static class AddChecks
 	public static AddPredicateCheck<T> Add<T>(Func<T, bool> predicate, string explanation) => new AddPredicateCheck<T>(predicate, explanation);
 }
 ```
-Check descriptions are intended to tell validation generator how to instantiate particular checks. [Here is example](https://github.com/reinforced/Reinforced.Tecture/blob/master/Features/Reinforced.Tecture.Features.Orm/Testing/Checks/Add/Descriptions.cs) of description for `Add` comannd check from example above.
+Check descriptions are intended to tell validation generator how to instantiate particular checks. [Here is example](https://github.com/reinforced/Reinforced.Tecture/blob/master/Features/Reinforced.Tecture.Features.Orm/Testing/Checks/Add/Descriptions.cs) description for `Add` command check from example above.
 
-Finally, all the checks supplied by feature are [packed into single extension method](https://github.com/reinforced/Reinforced.Tecture/blob/master/Features/Reinforced.Tecture.Features.Orm/Testing/Checks/Extensions.cs) for `UnitTestGenerator` class, so it can be disassembled back making you able to select only particular checks that you need.
+Finally, all the checks supplied by feature are [packed into single extension method](https://github.com/reinforced/Reinforced.Tecture/blob/master/Features/Reinforced.Tecture.Features.Orm/Testing/Checks/Extensions.cs) for `UnitTestGenerator` class, so it can be disassembled back. Therefore, you can select only particular checks that you need.
 

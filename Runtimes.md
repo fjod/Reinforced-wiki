@@ -10,7 +10,7 @@ PM> Install-Package Reinforced.Tecture.Runtimes.EfCore
 
 # Bind channels to runtimes
 
-Bindind channels to exact runtime is pretty similar to typical IoC registration, but usually is much shorter.
+Binding channels to exact runtime is pretty similar to typical IoC registration, but usually is much shorter.
 
 Runtimes are being connected to each channel according to features that they use. All the features used by channel must be fullfilled with runtimes when [[integrating|Ioc]] Tecture into your system. This can be done when you create `TectureBuilder` object as follows:
 
@@ -30,13 +30,13 @@ tb.WithChannel<Db>(c =>
 ITecture tecture = tb.Build();
 ```
 
-`Build` method of `TectureBuilder` implicitly validates that channels are correctly connected to runtimes. Unfortunately, there is no technical way to check that all the channels that are being used in services are correctly initialized, so be careful. Of course, Tecture will throw runtime exception if it encounders runtime-unbound channel usage. That is best that it can.
+`Build` method of `TectureBuilder` implicitly validates that channels are correctly connected to runtimes. Unfortunately, there is no technical way to check that all the channels that are used in services are correctly initialized, so be careful. Of course, Tecture will throw runtime exception when it encounters runtime-unbound channel usage. 
 
-Also this is affordable:
+Also you can use following syntax:
 
 ```csharp
 c.UseEfCoreDirectSqlCommand(ld);
 c.UseEfCoreOrmCommand(ld);
 ```
 
-Runtimes supply extension methods for binding only query or only command channel ends. Keep it in mind when your channel extends `CommandChannel<>` and `QueryChannel<>` but not `CommandQueryChannel<,>`.
+Runtimes supply extension methods that can be used to bind either query or command from channel. Keep it in mind when your channel extends `CommandChannel<>` and `QueryChannel<>` but not `CommandQueryChannel<,>`.

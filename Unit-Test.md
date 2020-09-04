@@ -1,19 +1,19 @@
 # The concept
 
-Tecture gives you ability to [[capture test data|Test-Data]] and to [[generate validation|Generate-Validation]]. The idea is to extract piece of business logic into unit test project, set up infrastructure using `TectureBuilder`, do several "code-build-debug" cycles until feature will not be implemented and after that, capture final test data, generate validation and leave test method for further regression checks.
+Tecture gives you ability to [[capture test data|Test-Data]] and to [[generate validation|Generate-Validation]]. The idea is to extract piece of business logic into unit test project, set up infrastructure using `TectureBuilder`, do several "code-build-debug" cycles until feature is implemented and after that, capture final test data, generate validation and leave test method for further regression checks.
 
 # Set up infrastructure
 
-In playground I use typical [unit test project](https://github.com/reinforced/Reinforced.Tecture/tree/master/Playground/Reinforced.Samples.ToyFactory.Tests) with xUnit connected. Also I've made several infrastructure classes that invoke test data capturing, validation generation and write resulting files under the certain folder of tests project. [Feel free to borrow them](https://github.com/reinforced/Reinforced.Tecture/tree/master/Playground/Reinforced.Samples.ToyFactory.Tests/Infrastructure), but do not hesitate to create yours if you feel not comfortable with my setup.
+In playground I use typical [unit test project](https://github.com/reinforced/Reinforced.Tecture/tree/master/Playground/Reinforced.Samples.ToyFactory.Tests) with xUnit connected. Also I created several infrastructure classes which implement test data capturing, generate validation and write resulting files under the certain folder of tests project. [Feel free to borrow them](https://github.com/reinforced/Reinforced.Tecture/tree/master/Playground/Reinforced.Samples.ToyFactory.Tests/Infrastructure), but do not hesitate to create your own if you feel not comfortable with my setup.
 
 ## How I do that
-- Create unit test class that inherits `TectureTestBase`
+- Create unit test class that inherits from `TectureTestBase`
 - Create test method that validates particular case
 - Put the following line into it:
 ```csharp
 using var c = Case(out ITecture ctx);
 ```
-- Call my services, logic or queries using `ctx` variable
+- Call services, logic or queries using `ctx` variable
 - Run/debug unit test on local database
 - If it succeeds - I receive `%TestName%_Validation.cs` and `%TestName_TestData.cs` in the folder `%TestName%` near the test class
 - I turn my initial using into
@@ -31,7 +31,7 @@ Finally, I run test method again to ensure that it works fast enough and does no
 
 # Why this approach is trustful?
 
-This approach validates several aspects of your business logic at once and reports if something has been changed. To be exact, Tecture validates:
+This approach validates several aspects of business logic at once and reports if something has been changed. To be exact, Tecture validates:
 
 ## Query order
 
@@ -43,7 +43,7 @@ Such test data class reproduces all the responses *sequentially*, step by step. 
 
 Test data entries contains hash of the query. It is being computed by feature that was used to produce this query. Hash is needed to check query consistency itself (even if query order seems to be maintained). 
 
-*Example:* the same setup with services `A` and `B` but you changed some `.Where` criterias. ORM feature will compute the hash of expression and if it is different - test fails again because we cannot be sure anymore that logic works correctly.
+*Example:* the same setup with services `A` and `B` but you changed some `.Where` criterias. ORM feature will compute the hash of expression and if it is different - test fails again because we cannot be sure that logic works correctly.
 
 ## Commands order
 
@@ -51,13 +51,13 @@ Basically Tecture ensures that commands in trace follows one after another and i
 
 ## Commands consistence
 
-Basic Tecture checks validates command annotation to correspond to initial value. Can be disabled by removing `.Basics` call from validation generator's configuration ([here](https://github.com/reinforced/Reinforced.Tecture/blob/master/Playground/Reinforced.Samples.ToyFactory.Tests/Infrastructure/TectureCase.cs#L49)).
+Basic Tecture checks validate command annotation, so it should correspond to it's initial value. It can be disabled by removing `.Basics` call from validation generator configuration ([here](https://github.com/reinforced/Reinforced.Tecture/blob/master/Playground/Reinforced.Samples.ToyFactory.Tests/Infrastructure/TectureCase.cs#L49)).
 
 Default checks for `Add` and `Delete`/`DeletePk` commands validate the state of entity that is being added or deleted. Default checks for SqlStroke validates SQL command checks and parameters... et cetera, et cetera.
 
 So therefore we have plenty of check places that are basically enough to catch critical or ruining regression changes in business logic. The more tests you create - the more cases you cover - the more stability you have.
 
-# What I do if unit test fails?
+# What do I do if unit test fails?
 
 Pay attention.
 

@@ -8,7 +8,7 @@ Automated test data capture is core concept that is needed to support [data-driv
 
 Trace does that when you do [[tracing]]. That is why it is bad idea to call `BeginTrace`/`EndTrace` in production code. 
 
-After calling `EndTrace`, `Trace` instances embraces copies (deep clones) of all the results of the [[queries]] made through Tecture infrastructure. This circumstance allows us to persist query results and reproduce them without external infrastructure. The most efficient way to store query results is... C# code. It allows to maintain compile-time checks of the test data and brings unit testing experience on the new level. 
+After calling `EndTrace`, `Trace` instances embrace copies (deep clones) of all the results of the [[queries]] made through Tecture infrastructure. This circumstance allows to persist query results and reproduce them without external infrastructure. The most efficient way to store query results is... C# code. It allows to maintain compile-time checks of the test data and brings unit testing experience on the new level. 
 
 
 # How to serialize test data into C# code
@@ -33,7 +33,7 @@ output.ToFile(@"Full\Path\To\Code\File.cs");
 ```
 It will generate `File.cs` within `Full\Path\To\Code\` folder. 
 
-Here is example of test data class for some random business logic:
+Here is example of test data class for random business logic:
 
 ```csharp
 using System;
@@ -99,7 +99,7 @@ That's all. All the queries done through this `tecture` instace will be redirect
 
 # Customization
 
-You can substitute values of particular query result that test generator will embed into resulting code. Like this:
+You can substitute values form particular query result that test generator will embed into resulting code. Like this:
 ```csharp
 Trace t = _tecture.EndTrace();
 
@@ -111,4 +111,4 @@ var output = t.GenerateTestData("ClassWithTestData", "Namespace.Of.My.Tests",
 				  
 output.ToFile(@"Full\Path\To\Code\File.cs");
 ```
-This will make test generator to embed `"Fake product name"` instead of actual data in `Name` property of every `Product` that appears in query results.
+This will make test generator to embed `"Fake product name"` instead of actual data in `Name` property for every `Product` that appears in query results.

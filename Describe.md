@@ -1,6 +1,6 @@
 # The concept
 
-Every query that is being made through Tecture and every command that is enqueued can be explained with few words using `.Describe` and `.Annotate` methods. The text that you write within these methods is being used in textual representation of the [[trace|tracing]]. So textual descriptions of several traces captured on same piece of business logic under different input conditions and different data from channels can give you and understanding what *actually* happens inside your business logic. 
+Every query that is being made through Tecture and every command that is enqueued can be explained with few words using `.Describe` and `.Annotate` methods. The text that you write within these methods is being used in textual representation of the [[trace|tracing]]. So textual descriptions of several traces captured on same piece of business logic under different input conditions and different data from channels can give you an understanding what *actually* happens inside your business logic. 
 
 In perfect world, this information can be presented to customer/product owner/other non-IT people for the sake of finding common language and improving the quality of requirements.
 
@@ -10,7 +10,7 @@ So your business logic becomes *dynamically self-explanatory* when run under dif
 
 # Command annotations
 
-Every [[feature|features]] method returns you command instance. `CommandBase` contains `Annotation` property and fluent method `.Annotate` that allows you to describe the semantic sense of what this command means and why we take decision that this command must take place:
+Every [[feature|features]] method returns an instance of the command. `CommandBase` contains `Annotation` property and fluent method `.Annotate` that allows you to describe the semantic sense of what this command means and why we used the command in the first place.
 
 Example: we reduce tax fee rate if order subtotal is less than $1000
 
@@ -85,7 +85,7 @@ N. [QRY] obtain all resources with quantity more than 50: 10 results obtained
 
 # `Comment` method
 
-There is `Comment` method available within [[service|services]]. Formally it enqueues empty command into the queue that consista only of its annotation, but actually is needed to improve trace explanation, like this:
+There is `Comment` method available within [[service|services]]. Formally it enqueues empty command into the queue. Empty command holds it's annotation. This is needed to improve trace explanation, like this:
 
 ```csharp
 if (condition)
@@ -114,7 +114,7 @@ using (var c = Cycle("adding products"))
 }
 ```
 
-And trace explanation be like:
+And trace explanation be like :
 
 ```
 N. [CYC] Cycle of adding products
